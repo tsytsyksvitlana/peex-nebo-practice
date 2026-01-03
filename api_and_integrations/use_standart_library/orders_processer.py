@@ -1,7 +1,6 @@
 import csv
-import re
-import math
 import os
+import re
 import subprocess
 import zipfile
 from datetime import datetime, timedelta
@@ -50,9 +49,8 @@ print(f"Cleaned data written to {OUTPUT_FILE}")
 # -----------------------------
 # 3. Calculate total orders where order_dow == 3
 # -----------------------------
-dow_3_count = sum(
-    1 for r in rows if r["order_dow"].isdigit() and math.floor(int(r["order_dow"])) == 3
-)
+dow_3_count = sum(int(r["order_dow"]) == 3 for r in rows if r["order_dow"].isdigit())
+
 
 print(f"Total orders with order_dow = 3: {dow_3_count}")
 
@@ -62,16 +60,14 @@ print(f"Total orders with order_dow = 3: {dow_3_count}")
 os.makedirs("reports", exist_ok=True)
 print("Directory 'reports' created.")
 
+
 # -----------------------------
 # 5. List files using subprocess
 # -----------------------------
 def list_files():
-    result = subprocess.run(
-        ["ls"],
-        capture_output=True,
-        text=True
-    )
+    result = subprocess.run(["ls"], capture_output=True, text=True)
     return result.stdout
+
 
 print("Files in current directory:")
 print(list_files())

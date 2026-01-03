@@ -81,6 +81,7 @@ print("\n=== Binary Search Tree ===")
 
 class Node:
     """BST node with value, left, and right children."""
+
     def __init__(self, value):
         self.value = value
         self.left = None
