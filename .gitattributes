@@ -1,2 +1,0 @@
-batch_processing/tv-series-project/dataset/tv_series.json filter=lfs diff=lfs merge=lfs -text
-tv_series.json
